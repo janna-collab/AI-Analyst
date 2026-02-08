@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VentureScout AI - Professional Startup Analysis</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "react": "https://esm.sh/react@^19.2.4",
+    "@google/genai": "https://esm.sh/@google/genai@^1.40.0",
+    "recharts": "https://esm.sh/recharts@^3.7.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "lucide-react": "https://esm.sh/lucide-react@^0.563.0",
+    "clsx": "https://esm.sh/clsx@^2.1.1",
+    "tailwind-merge": "https://esm.sh/tailwind-merge@^3.4.0"
+  }
+}
+</script>
+    <style>
+        @keyframes scan {
+            0% { top: 0; }
+            100% { top: 100%; }
+        }
+        .animate-scan {
+            animation: scan 3s linear infinite;
+        }
+        body {
+            background-color: #020617;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        /* Custom scrollbar for dark theme */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #475569;
+        }
+
+        @media print {
+            body { background: white !important; color: black !important; }
+            #root > div > div:first-child { display: none !important; } /* Hide Sidebar */
+            header { display: none !important; } /* Hide Header */
+            .print\:hidden { display: none !important; }
+            main { margin-left: 0 !important; padding: 0 !important; background: white !important; }
+            .bg-slate-950, .bg-slate-900, .bg-slate-800 { background: white !important; border-color: #ddd !important; }
+            .text-white, .text-slate-300, .text-slate-400 { color: black !important; }
+            .shadow-sm, .shadow-lg, .shadow-2xl { shadow: none !important; }
+            canvas, .recharts-responsive-container { filter: grayscale(1) invert(1); }
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+</html>

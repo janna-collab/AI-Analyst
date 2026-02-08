@@ -1,0 +1,28 @@
+{
+  "name": "venturescout-ai",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Professional AI-powered analyst platform for startup evaluation.",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@google/genai": "^1.40.0",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.454.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "recharts": "^2.13.0",
+    "tailwind-merge": "^2.5.4"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "typescript": "^5.6.3",
+    "tailwindcss": "^3.4.14",
+    "vite": "^5.0.0"
+  }
+}
