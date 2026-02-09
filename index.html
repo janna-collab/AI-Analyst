@@ -50,15 +50,44 @@
         }
 
         @media print {
-            body { background: white !important; color: black !important; }
-            #root > div > div:first-child { display: none !important; } /* Hide Sidebar */
-            header { display: none !important; } /* Hide Header */
-            .print\:hidden { display: none !important; }
-            main { margin-left: 0 !important; padding: 0 !important; background: white !important; }
-            .bg-slate-950, .bg-slate-900, .bg-slate-800 { background: white !important; border-color: #ddd !important; }
-            .text-white, .text-slate-300, .text-slate-400 { color: black !important; }
-            .shadow-sm, .shadow-lg, .shadow-2xl { shadow: none !important; }
-            canvas, .recharts-responsive-container { filter: grayscale(1) invert(1); }
+            body { 
+                background: white !important; 
+                color: black !important; 
+            }
+            #root > div > div:first-child, /* Sidebar */
+            header, /* Nav */
+            .print\:hidden { 
+                display: none !important; 
+            }
+            main { 
+                margin-left: 0 !important; 
+                padding: 0 !important; 
+                background: white !important; 
+            }
+            .bg-slate-950, .bg-slate-900, .bg-slate-800, .bg-slate-950\/40 { 
+                background: white !important; 
+                border: 1px solid #eee !important;
+                box-shadow: none !important;
+            }
+            .text-white, .text-slate-300, .text-slate-400, .text-slate-200 { 
+                color: #111 !important; 
+            }
+            .radar-chart-container, canvas, svg {
+                filter: none !important;
+            }
+            .max-w-7xl {
+                max-width: 100% !important;
+                padding: 40px !important;
+            }
+            h1, h2, h3 { color: #000 !important; font-weight: 800 !important; }
+            .bg-indigo-600, .bg-blue-600 {
+                background: #000 !important;
+                color: white !important;
+            }
+            .rounded-2xl, .rounded-xl {
+                border-radius: 0 !important;
+                border: 1px solid #ddd !important;
+            }
         }
     </style>
 </head>

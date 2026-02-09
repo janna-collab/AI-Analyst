@@ -4,42 +4,46 @@
 
 VentureScout AI uses a multi-agent swarm powered by Gemini 3 Pro to automate venture capital due diligence.
 
+## 🛠 Built With
+
+### AI & Reasoning
+- **Google Gemini API**: Core intelligence for multimodal extraction and reasoning.
+- **Gemini 3 Pro**: Primary model for high-conviction investment synthesis and managing partner consensus.
+- **Gemini 3 Flash**: High-speed extraction model for financial DNA and forensic auditing.
+- **Google Search Tool**: Real-time market grounding for 2025 industry benchmarks.
+- **Agentic Swarm Architecture**: 3-stage high-efficiency pipeline (Auditor, Strategist, Partner).
+
+### Frontend Stack
+- **React 19**: Modern declarative UI framework.
+- **TypeScript**: Ensuring financial data integrity across the platform.
+- **Tailwind CSS**: Institutional "Bloomberg-grade" aesthetic and responsive layouts.
+- **Lucide React**: Clean, consistent iconography for professional dashboards.
+- **Recharts**: High-performance data visualization for scorecards and traction analysis.
+
+### Infrastructure & Operations
+- **Exponential Backoff**: Robust rate-limit (429) management for high-volume API calls.
+- **LocalStorage**: Persistent session and pipeline history management.
+- **PDF Extraction**: Intelligent multimodal ingestion of pitch decks and appendices.
+
 ## 🚀 Local Execution Guide
 
-### 1. Backend Setup (The Brain)
-The backend handles document processing, semantic search (RAG), and AI agent orchestration.
-
+### 1. Installation
 ```bash
-# Navigate to backend
-cd backend
-
-# Create a virtual environment (optional but recommended)
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-
 # Install dependencies
-pip install -r requirements.txt
-
-# Configure your API Key
-# Open .env and replace 'your_gemini_api_key_here' with your actual key
-
-# Start the server
-uvicorn main:app --host 0.0.0.0 --port 8000
-```
-
-### 2. Frontend Setup (The Client)
-The frontend provides the interface for uploading materials and viewing the generated Investment Memos.
-
-```bash
-# In a new terminal tab, from the project root:
 npm install
+
+# Start development server
 npm run dev
 ```
 
-The application will be available at `http://localhost:5173` (or the port specified by Vite).
+### 2. Configuration
+Ensure you have an API Key from Google AI Studio. The application expects `process.env.API_KEY` to be configured in your environment.
 
 ## 🏗 System Architecture
-- **API Transport**: The frontend sends `multipart/form-data` to `localhost:8000`.
-- **Intelligence**: Powered by `gemini-3-pro-preview` for high-level reasoning.
-- **Memory**: Uses `ChromaDB` for local vector storage of uploaded pitch decks and transcripts.
-- **Security**: API Keys are kept server-side in the `backend/.env` file.
+- **Stage 1 (Forensic Auditor)**: Extracts unit economics and audits founder signals.
+- **Stage 2 (Market Strategist)**: Uses Google Search for competitive mapping and benchmarks.
+- **Stage 3 (Managing Partner)**: Synthesizes all data into a definitive Invest/Pass verdict.
+
+## 🔒 Security & Compliance
+- **Multimodal Data**: Processes PDF, Audio, and Text via Gemini's large context window.
+- **Client-Side Storage**: Reports are stored locally for maximum privacy during guest sessions.

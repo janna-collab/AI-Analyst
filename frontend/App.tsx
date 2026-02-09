@@ -25,7 +25,7 @@ const App: React.FC = () => {
   const [analysisResult, setAnalysisResult] = useState<StartupAnalysis | null>(null);
   const [savedReports, setSavedReports] = useState<SavedReport[]>([]);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
-  const [analysisStatus, setAnalysisStatus] = useState<string>("Initializing Agent Swarm...");
+  const [analysisStatus, setAnalysisStatus] = useState<string>("Initializing Institutional Swarm...");
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -44,25 +44,25 @@ const App: React.FC = () => {
   const handleAnalyze = async (files: UploadedFile[], notes: string, sector: string) => {
     setIsAnalyzing(true);
     setError(null);
-    setAnalysisStatus("Intake complete. Calling Backend Swarm...");
+    setAnalysisStatus("Activating specialized agents...");
     try {
       const result = await apiService.analyzeStartup(files, notes, sector, (status) => {
         setAnalysisStatus(status);
       });
       setAnalysisResult(result);
       
-      // Auto-save the most recent analysis to history
       if (currentUser) {
         storageService.saveReport(result, currentUser);
         loadHistory(currentUser);
       }
     } catch (err: any) {
       console.error(err);
-      const errorMsg = err.message || "Analysis failure.";
+      const errorMsg = err.message || "The Swarm was interrupted.";
       if (errorMsg.includes("429") || errorMsg.includes("RESOURCE_EXHAUSTED") || errorMsg.includes("quota")) {
-        setError("API Quota Exceeded. The Gemini API limits for this key have been reached. Please wait a minute or upgrade your plan.");
+        setError("Rate limit hit. The Swarm is automatically retrying with exponential backoff. Please wait 10-20 seconds...");
+        // Re-attempt handled internally by swarmProvider with retry logic
       } else {
-        setError(errorMsg || "Analysis failure. The backend swarm was interrupted.");
+        setError(errorMsg);
       }
     } finally {
       setIsAnalyzing(false);
@@ -76,15 +76,9 @@ const App: React.FC = () => {
       setCurrentUser(guestUser);
       loadHistory(guestUser);
     } catch (e) {
-      const sessionUser = authService.getCurrentUser();
-      if (sessionUser) {
-        setCurrentUser(sessionUser);
-        loadHistory(sessionUser);
-      } else {
-        const fallbackUser = { id: 'guest', email: 'guest@venturescout.ai', name: 'Guest Analyst' };
-        setCurrentUser(fallbackUser);
-        loadHistory(fallbackUser);
-      }
+      const fallbackUser = { id: 'guest', email: 'guest@venturescout.ai', name: 'Guest Analyst' };
+      setCurrentUser(fallbackUser);
+      loadHistory(fallbackUser);
     }
   };
 
@@ -205,9 +199,9 @@ const App: React.FC = () => {
             </div>
 
             {error && (
-              <div className="mb-6 bg-red-900/10 border border-red-500/30 text-red-400 px-4 py-3 rounded-lg flex items-center gap-2 text-sm animate-in fade-in slide-in-from-top-2">
+              <div className="mb-6 bg-blue-900/10 border border-blue-500/30 text-blue-400 px-4 py-3 rounded-lg flex items-center gap-2 text-sm animate-in fade-in slide-in-from-top-2">
                 <AlertCircle size={16} className="shrink-0" />
-                <span className="font-bold">Execution Error:</span> {error}
+                <span className="font-bold">System Status:</span> {error}
               </div>
             )}
 

@@ -19,6 +19,24 @@ export interface Competitor {
   marketPosition: string;
   market_gap: string;
   estimated_growth: string;
+  entry_barriers: string;
+}
+
+export interface Financials {
+  profit_margin: string;
+  burn_rate: string;
+  ltv_cac_ratio: string;
+  payback_period: string;
+  runway_months: number;
+  revenue_quality_score: number;
+}
+
+export interface FounderInsight {
+  founder_name: string;
+  background_strength: 'Elite' | 'Strong' | 'Average';
+  emotional_resilience_score: number;
+  commitment_signals: string[];
+  founder_market_fit: string;
 }
 
 export interface MarketDetails {
@@ -55,13 +73,17 @@ export interface StartupAnalysis {
     product: number;
     market: number;
     traction: number;
+    financials: number;
     overall: number;
   };
   keyMetrics: {
     label: string;
     value: string;
     benchmarkComparison: 'Below' | 'Average' | 'Above';
+    industryStandard?: string;
   }[];
+  financials?: Financials;
+  founder_insights?: FounderInsight[];
   risks: {
     severity: 'High' | 'Medium' | 'Low';
     category: string;
@@ -70,6 +92,8 @@ export interface StartupAnalysis {
   opportunities: string[];
   verdict: 'Invest' | 'Pass' | 'Watch';
   reasoning: string;
+  path_to_profitability?: string;
+  growth_strategy?: string;
   sources?: GroundingSource[];
   market_details?: MarketDetails;
 }

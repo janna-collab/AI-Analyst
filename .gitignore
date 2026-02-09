@@ -1,35 +1,24 @@
-# Dependencies
-node_modules/
-.pnp
-.pnp.js
-vendor/
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
 
-# Environment
-.env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+node_modules
+dist
+dist-ssr
+*.local
 
-# Python
-__pycache__/
-*.py[cod]
-*$py.class
-.venv
-venv/
-ENV/
-build/
-dist/
-
-# VectorDB Data
-vectordb/data/
-
-# IDEs
-.vscode/
-.idea/
-*.swp
-*.swo
-
-# OS
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
 .DS_Store
-Thumbs.db
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

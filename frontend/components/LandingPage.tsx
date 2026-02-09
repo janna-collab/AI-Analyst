@@ -1,9 +1,11 @@
+
 import React from 'react';
 import { 
   BarChart2, ShieldCheck, Zap, ArrowRight, TrendingUp, Search, 
   BrainCircuit, Globe, Bot, Sparkles, CheckCircle2, Play, 
   PieChart, Activity, FileText, MessageSquare, Telescope, 
-  Layers, Clock, Users, ChevronRight, Star, Quote, Check
+  Layers, Clock, Users, ChevronRight, Star, Quote, Check,
+  Cpu, Code2, Database, Network
 } from 'lucide-react';
 
 interface LandingPageProps {
@@ -232,8 +234,41 @@ const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted, onLogin, onSign
         </div>
       </section>
 
+      {/* SECTION: BUILT WITH / TECH STACK */}
+      <section className="py-24 bg-slate-950/50 border-y border-white/5 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6">
+           <div className="text-center mb-16">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 mb-4">
+                <Code2 size={14} className="text-indigo-400" />
+                <span className="text-[10px] font-bold text-slate-400 tracking-widest uppercase">Institutional Tech Stack</span>
+              </div>
+              <h2 className="text-3xl font-bold">Built for High-Stakes Evaluation</h2>
+           </div>
+
+           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8">
+              {[
+                { name: 'Gemini 3 Pro', icon: <Bot className="text-indigo-400" />, desc: 'Deep Reasoning' },
+                { name: 'Gemini 3 Flash', icon: <Zap className="text-yellow-400" />, desc: 'Rapid Extraction' },
+                { name: 'Google Search', icon: <Globe className="text-blue-400" />, desc: 'Market Grounding' },
+                { name: 'Multi-Agent Swarm', icon: <Network className="text-purple-400" />, desc: 'Consensus Logic' },
+                { name: 'React 19', icon: <Cpu className="text-cyan-400" />, desc: 'Performance UI' },
+                { name: 'TypeScript', icon: <ShieldCheck className="text-green-400" />, desc: 'Type-Safe Finance' }
+              ].map((tech, i) => (
+                <div key={i} className="flex flex-col items-center text-center group">
+                   <div className="w-16 h-16 bg-slate-900 border border-white/5 rounded-2xl flex items-center justify-center mb-4 group-hover:border-indigo-500/50 group-hover:shadow-[0_0_20px_rgba(79,70,229,0.2)] transition-all duration-300">
+                      {/* DO fix: Added generic type to React.ReactElement to allow 'size' property and resolve TS error */}
+                      {React.cloneElement(tech.icon as React.ReactElement<any>, { size: 28 })}
+                   </div>
+                   <h4 className="text-sm font-bold text-white mb-1">{tech.name}</h4>
+                   <p className="text-[10px] text-slate-500 font-medium uppercase tracking-tight">{tech.desc}</p>
+                </div>
+              ))}
+           </div>
+        </div>
+      </section>
+
       {/* SECTION 2: TRUSTED BY */}
-      <section className="py-10 border-y border-white/5 bg-white/[0.02]">
+      <section className="py-10 border-b border-white/5 bg-white/[0.02]">
          <div className="max-w-7xl mx-auto px-6 text-center">
             <p className="text-sm font-semibold text-slate-500 uppercase tracking-widest mb-6">Empowering Investment Teams At</p>
             <div className="flex flex-wrap justify-center gap-12 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
